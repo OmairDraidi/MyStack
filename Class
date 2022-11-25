@@ -1,0 +1,80 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class Stack <E>{
+ArrayList <E> list = new ArrayList<E>();
+
+    public Stack() {
+    }
+
+    public int size() {
+        return list.size();
+    }
+
+    public boolean isEmpty() {
+        return list.size() <= 0;
+    }
+
+    public boolean contains(E val) {
+        for (int i = 0;i < list.size();i++){
+            if (list.get(i) == val){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void add(E val) {
+        list.add(val);
+    }
+    public E peek(){
+        return list.get(list.size()-1);
+    }
+
+    public E pop (){
+        E s = list.get(list.size() - 1);
+        list.remove(list.size() - 1);
+        return s;
+    }
+    public void remove(E val) {
+        if (list.isEmpty()){
+            return;
+        }
+        ArrayList <E> list2 = new ArrayList<>();
+        for (int i = 0;i < list.size();i++){
+            if (list.get(i) != val){
+                list2.add(list.get(i));
+            }
+        }
+        list = list2;
+    }
+    public void removeByIndex(int index) {
+        if (list.isEmpty()){
+            return;
+        }
+       list.remove(index);
+    }
+
+    public void clear() {
+        ArrayList <E> list3 = new ArrayList<>();
+        list = list3;
+    }
+
+
+    public boolean removeAll() {
+        ArrayList <E> list3 = new ArrayList<>();
+        list = list3;
+        return true;
+    }
+    @Override
+    public String toString() {
+        String s = "[";
+        for (int i = 0; i < list.size(); i++) {
+            if (i == list.size() - 1)
+                s += list.get(i);
+            else
+                s += list.get(i)+ ",";
+        }
+        return s+"]";
+    }
+}
